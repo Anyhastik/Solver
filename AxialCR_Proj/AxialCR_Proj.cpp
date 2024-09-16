@@ -204,7 +204,7 @@ mp_t ChanRad::crystal(mp_t x, mp_t y) {
 	/**
 	* Результирующая функция для описания ямы с распределением Коши
 	*/
-	return -periodicPotntial1(x, y) - periodicPotntial2(x, y);
+	return - periodicPotntial1(x, y) - periodicPotntial2(x, y);
 }
 
 mp_t ChanRad::DXcrystal(mp_t x, mp_t y) {
@@ -213,13 +213,11 @@ mp_t ChanRad::DXcrystal(mp_t x, mp_t y) {
 	*/
 	const mp_type mp =
 		derivative(mp_type(mp_type(x)),
-			mp_type(mp_type(1) / 100000000U), /// Step size 10^-8.
+			mp_type(mp_type(1) / 100000000U), 
 			[&](const mp_type& x) -> mp_type
 			{
 				return crystal(static_cast<mp_t>(x), y) ;  /// Function
 			});
-	mp_t res = mp.convert_to<mp_t>(); /// Convert to closest double.
-	return res;
 }
 
 mp_t ChanRad::DYcrystal(mp_t x, mp_t y) {
@@ -228,13 +226,11 @@ mp_t ChanRad::DYcrystal(mp_t x, mp_t y) {
 	*/
 	const mp_type mp =
 		derivative(mp_type(mp_type(y)),
-			mp_type(mp_type(1) / 100000000U), /// Step size 10^-8.
+			mp_type(mp_type(1) / 100000000U), 
 			[&](const mp_type& y) -> mp_type
 			{
 				return crystal(x, static_cast<mp_t>(y)) ;  /// Function
 			});
-	mp_t res = mp.convert_to<mp_t>(); /// Convert to closest double.
-	return res;
 }
 
 
