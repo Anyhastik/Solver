@@ -5,14 +5,6 @@
 #include "Radau.hpp"
 #include "Types.hpp"
 
-
-//////////////////////////////////////////////////////////////////////////////////////////
-
-//#define abor 0.529 * pow(10, -10)
-//const mp_t myltipl = 1;  //1e-10;
-//const mp_t myltipl_plus = 1;  //1e10;
-
-
 /**
  * Класс содержит функции для описания осевого каналирования
  */
@@ -52,6 +44,7 @@ public:
 		maxElements = {};
 		minElements = {};
 		dp = 0;
+		t0 = 1e-16;
 		SizeTrajectory = 0;
 	}
 
